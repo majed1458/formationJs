@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice DOM 1</title>
+</head>
+<body>
+    <div id="container">
+        <p class="text"> premier paragraph</p>
+        <p class="text"> deuxiéme paragraph</p>
+        <p>troisième paragraph</p>
+    </div>
+
+
+    </div>
+<script>
+    // 1. selectionner l'element avec l'id container et l'afficher dans la console
+    const container = document.getElementById("container")
+    console.log(container)
+    // 2. selectionner tous les element avec la classe text 
+    const textes = document.getElementsByClassName("text")
+    console.log(textes[0])
+    // 3. selectionner tous les elements p 
+    const paragraphes = document.getElementsByTagName("p")
+    console.log(paragraphes[0])
+</script>
+</body>
+</html>

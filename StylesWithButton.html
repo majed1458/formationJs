@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #boite{
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .controls{
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Modification du style avec JavaScript</h1>
+    <div id="boite">Boite de style</div>
+
+    <div class="controls">
+        <button id="changer-couleur">Changer la couleur</button>
+        <button id="btn-taille">changer la taille</button>
+        <button id="btn-bordure">Ajouter/Supprimer bordure</button>
+        <button id="btn-rond">Arrondir les coins</button>
+        <button id="btn-reset">Reinitialisation</button>
+    </div>
+    
+    <script>
+        const boite = document.getElementById("boite")
+        const btnChangerCouleur = document.getElementById("changer-couleur")
+        const btnTaille = document.getElementById("btn-taille")
+        const btnBordure = document.getElementById("btn-bordure")
+        const btnRond = document.getElementById("btn-rond")
+        const btnReset = document.getElementById("btn-reset")
+
+        // couleur aléatoire
+        const couleurs = ["red", "green", "blue", "yellow", "purple", "orange"]
+        let index = 0
+        btnChangerCouleur.addEventListener("click", function() {
+            boite.style.backgroundColor = couleurs[index]
+            index = (index + 1) % couleurs.length
+        })
+    </script>
+</body>
+</html>

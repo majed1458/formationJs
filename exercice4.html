@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulation des attributs</title>
+</head>
+<body>
+    <h1>Manipulation des attributs</h1>
+    <img id="mon-image" src="https://cdn.pixabay.com/photo/2012/08/27/14/19/mountains-55067_640.png" alt="image par defaut" title="image par defaut">
+    <div>
+        <button id="changer-image">Changer l'image</button>
+        <button id="ajouter-titre">Ajouter un Titre d'image</button>
+        <button id="supprimer-titre">Supprimer titre d'image</button>
+    </div>
+
+    <script>
+        const image = document.getElementById("mon-image")
+        const btnChangerImage = document.getElementById("changer-image")
+        const btnAjouterTitre = document.getElementById("ajouter-titre")
+        const btnSupprimerTitre = document.getElementById("supprimer-titre")
+
+        // Changer l'image
+        let imageChangee = false
+
+        btnChangerImage.addEventListener("click", function() {
+           if(imageChangee){
+            image.src = "https://cdn.pixabay.com/photo/2012/08/27/14/19/mountains-55067_640.png"
+            image.alt = "image par defaut"
+           }else{
+            image.src="https://www.explore.com/img/gallery/the-50-most-incredible-landscapes-in-the-whole-entire-world/intro-1672072042.jpg"
+            image.alt = "Image alternative"
+           }
+              imageChangee = !imageChangee
+        })
+
+    </script>
+</body>
+</html>

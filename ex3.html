@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="liste">
+        <li>item1</li>
+       
+    </ul>
+
+    <script>
+        // creer un nouveau element li avec le texte "item2"
+        const nouveauItem = document.createElement("li")
+        nouveauItem.textContent = "item2"
+        // ajouter li au ul
+        document.getElementById("liste").appendChild(nouveauItem)
+        // creer un element p avec le text "fin de la liste" et l'ajouter apres le ul
+        const fin = document.createElement("p")
+        fin.textContent = "fin de la liste"
+        document.body.appendChild(fin)
+        // ajout "debut de la liste" avant le ul
+        const debut = document.createElement("p")
+        debut.textContent = "debut de la liste"
+        document.body.insertBefore(debut, document.getElementById("liste"))
+
+        // remplacement de ul avec nouveau ol
+        const nouveauUl = document.createElement("ol")
+        nouveauUl.id = "nouvelle-liste"
+        nouveauUl.innerHTML = "<li>nouveau Item1</li><li>Nouveau Item2</li>"
+        document.body.replaceChild(nouveauUl, document.getElementById("liste"))
+        document.body.removeChild(fin)
+
+    </script>
+</body>
+</html>

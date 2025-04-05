@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="titre">Bonjour</h1>
+    <div id="contenu"> Contenue initiale</div>
+    <img src="https://cdn.pixabay.com/photo/2012/08/27/14/19/mountains-55067_640.png" alt="image test" >
+
+<script>
+  const image = document.querySelector("img")
+  image.setAttribute("src","https://www.explore.com/img/gallery/the-50-most-incredible-landscapes-in-the-whole-entire-world/intro-1672072042.jpg")
+    // image.setAttribute("alt","Image de paysage incroyable")
+    if(image.hasAttribute("alt")){
+        console.log("L'attribut alt existe")
+        image.removeAttribute("alt")
+        console.log("L'attribut alt a été supprimé")
+    }else{
+        image.setAttribute("alt","Image de paysage incroyable")
+    }
+
+    const nouveauParagraph = document.createElement("p")
+    nouveauParagraph.textContent = "Ceci est un nouveau paragraph"
+    const contenu = document.getElementById("contenu")
+
+    contenu.appendChild(nouveauParagraph)
+</script>
+</body>
+</html>
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> modification du DOM</h1>
+    <p id="text"> ceci est le text original</p>
+
+    <button id="bouton-texte">Modifier le text</button>
+    <button id="bouton-html">Ajout du HTML</button>
+    
+<script>
+    const paragraphe = document.getElementById("text")
+    const boutonTexte = document.getElementById("bouton-texte")
+    const boutonHtml = document.getElementById("bouton-html")
+
+    boutonTexte.addEventListener("click", function() {
+        paragraphe.textContent = "le text a été modifié"
+    })
+
+    boutonHtml.addEventListener("click", function() {
+        paragraphe.innerHTML = `<ul>
+            <li>item1</li>
+            <li>item2</li>
+            <li>item3</li>
+        </ul>
+        `
+    })
+</script>
+</body>
+</html>

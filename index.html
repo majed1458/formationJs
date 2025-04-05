@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Selection d'element</title>
+    </head>
+    <body>
+        <h1 id="titre-principal">Ma page de test</h1>
+        <p class="paragraph">premier paragraph</p>
+        <p class="paragraph important"> paragraph important</p>
+        <ul>
+            <li>item1</li>
+            <li>item2</li>
+            <li>item3</li>
+        </ul>
+        <div id="container">
+            <span class="texte">text dans un span</span>
+        </div>
+        <script>
+            // selection par id
+            const titrePrincipal = document.getElementById("titre-principal")
+            console.log("par ID", titrePrincipal.textContent)
+            // selection par class
+            const paragraphes = document.getElementsByClassName("paragraph")
+            console.log("par class", paragraphes.length)
+            // par balise
+            const items = document.getElementsByTagName("li")
+            console.log("par balise", items.length)
+            // selection par querySelector(premier element)
+            const paragraphImportant = document.querySelector(".paragraph.important")
+            console.log("par querySelector", paragraphImportant.textContent)
+            // selection par querySelectorAll(tous les elements)
+            const paragraphes2 = document.querySelectorAll(".paragraph")
+            console.log("par querySelectorAll", paragraphes2.length)
+            // selection combinee
+            const span = document.querySelector("#container .texte")
+            console.log("par selection combinee", span.textContent)
+
+            // modification de contenu
+            titrePrincipal.textContent = "Nouveau titre"
+
+            // modifier le html
+            titrePrincipal.innerHTML = "<strong>Nouveau titre en gras</strong>"
+        </script>
+    </body>
+</html>
