@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulation des elements
+
+    </title>
+    <style>
+        .liste-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 4px 0;
+            background-color: #f4f4f4;
+            list-style-type: none;
+            padding: 8px;
+        }
+        .btn-supprimer {
+            cursor: pointer;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ma liste de Taches</h1>
+    <form id="form-tache">
+        <input type="text" id="nouvelle-tache" placeholder="Ajouter une tache" required>
+        <button type="submit">Ajouter</button>
+    </form>
+    <ul id="liste-taches">
+        <!-- Les taches seront ajoutées ici -->
+    </ul>
+
+   
+</body>
+</html>
