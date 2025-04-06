@@ -32,6 +32,38 @@
         <!-- Les taches seront ajoutées ici -->
     </ul>
 
-   
+    <script>
+        const formTache = document.getElementById("form-tache");
+        const nouvelleTache = document.getElementById("nouvelle-tache");
+        const listeTaches = document.getElementById("liste-taches");
+
+        formTache.addEventListener("submit", function(event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+            const texte = nouvelleTache.value.trim();
+            if(texte ==="")return;
+
+            const li = document.createElement("li");
+            li.className = "liste-item";
+
+            const span = document.createElement("span");
+            span.textContent = texte;
+
+            li.appendChild(span);
+
+            const btnSupprimer = document.createElement("span");
+            btnSupprimer.className = "btn-supprimer";
+            btnSupprimer.textContent = "X";
+            btnSupprimer.addEventListener("click", function() {
+                li.remove(); // Supprime l'élément li
+            });
+            li.appendChild(btnSupprimer);
+            
+            listeTaches.appendChild(li);
+
+            nouvelleTache.value = ""; // Réinitialise le champ de saisie
+            formTache.focus(); // Remet le focus sur le formulaire
+            
+        });
+    </script>
 </body>
 </html>
