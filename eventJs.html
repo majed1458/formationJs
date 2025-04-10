@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evennements du souris</title>
+    <style>
+        #zone {
+            width: 300px;
+            height: 200px;
+            background-color: lightblue;
+            border: 1px solid blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            transition: background-color 0.3s;
+                }
+        #position {
+            margin: 10px;
+            font-family: monospace;
+        }
+</style>
+</head>
+<body>
+    <h1>Evennements de souris</h1>
+    <div id ="zone">Survolez-moi</div>
+    <div id="position">position x=0, y=0</div>
+
+    <h2>Zone de texte</h2>
+    <p>Entrez du texte ci-dessous :</p>
+    <textarea id="champ-text" placeholder="Tapez ici..."></textarea>
+    <div id="infos">
+       <p>derniére touche: <span id="derniére-touche">aucun</span></p> 
+       <p>code de la touche: <span id="code-touche">aucun</span></p> 
+       <p>nombre de caractére: <span id="nbr-caract">0</span></p> 
+
+    </div>
+    <script>
+        const zone = document.getElementById("zone")
+        const position = document.getElementById("position")
+
+        zone.addEventListener("mouseenter", function() {
+            zone.style.backgroundColor = "lightgreen"
+            zone.textContent = "Souris entrée"
+        })
+        zone.addEventListener("mouseleave", function() {
+            zone.style.backgroundColor = "lightblue"
+            zone.textContent = "Survolez-moi"
+        })
+
+        zone.addEventListener("mousemove", function(event) {
+            const x = event.clientX - zone.getBoundingClientRect().left
+            const y = event.clientY - zone.getBoundingClientRect().top
+            position.textContent = `position x=${x}, y=${y}`
+
+        
+        })
+
+
+        // Champ de texte
+        const champTexte = document.getElementById("champ-text")
+        const derniéreTouche = document.getElementById("derniére-touche")
+        const codeTouche = document.getElementById("code-touche")
+        const nbrCaract = document.getElementById("nbr-caract")
+        champTexte.addEventListener("keydown", function(event) {
+            console.log(event)
+            derniéreTouche.textContent = event.key
+            codeTouche.textContent = event.code
+            if(event.code === "Enter"){
+                zone.style.backgroundColor = "red"
+            }
+        })
+
+        champTexte.addEventListener("input", function() {
+            nbrCaract.textContent = champTexte.value.trim().length
+        })
+
+
+          
+    </script>
+</body>
+</html>

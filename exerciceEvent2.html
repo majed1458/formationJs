@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #clickArea {
+            width: 300px;
+            height: 200px;
+            border: 1px dashed blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            cursor: pointer; /* Change cursor to pointer */
+        }
+        </style>
+</head>
+<body>
+    <div id="clickArea">Click anywhere in this Box</div>
+    <p>click counts: <span id="counter">0</span></p>
+    <p>Last click postion: <span id="position">None yet</span></p>
+</body>
+
+<script>
+    const clickArea = document.getElementById("clickArea")
+    const counter = document.getElementById("counter")
+    const position = document.getElementById("position")
+
+    let clickCount = 0
+    clickArea.addEventListener("click",(e)=>{
+        console.log("event",e)
+        clickCount++
+        counter.textContent = clickCount;
+        position.textContent = `x=${e.clientX}, y=${e.clientY}`
+    })
+
+    clickArea.addEventListener("mouseenter",()=>{
+        clickArea.style.border = "red dashed 1px"
+    })
+
+    clickArea.addEventListener("mouseleave",()=>{
+        clickArea.style.border = "blue dashed 1px"
+    })
+
+  </script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #gameArea {
+            width: 500px;
+            height: 300px;
+            border: 2px solid black;
+            position: relative;
+            overflow: hidden;
+        }
+        #square {
+            width: 40px;
+            height:40px;
+            background-color: blue;
+            position: absolute;
+            top: 130px; /* Initial vertical position */
+            left: 230px; /* Initial horizontal position */
+        }
+        </style>
+</head>
+<body>
+    <h3>Use Arrow keys to move he blue square </h3>
+    <div id="gameArea">
+        <div id="square"></div>
+    </div>
+    <p>Position: <span id="position">(230,130)</span></p>
+<script>
+    const player = document.getElementById("square")
+    const positionDisplay = document.getElementById("position")
+    const gameArea = document.getElementById("gameArea")
+    let x = 230; // Initial horizontal position
+    let y = 130; // Initial vertical position
+
+    document.addEventListener("keydown", function(event) {
+       console.log(event.key)
+       switch(event.key){
+        case "ArrowUp":
+            y -= 10; // Move up
+            break;
+        case "ArrowRight":
+            x += 10; // Move right
+            break;
+
+        case "ArrowDown":
+            y += 10; // Move down
+            break;
+        case "ArrowLeft":
+            x -= 10; // Move left
+            break;
+       }
+
+       player.style.top = y + "px";
+       player.style.left = x + "px";
+    });
+</script>
+</body>
+</html>

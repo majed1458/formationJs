@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            cursor: crosshair;
+        }
+        .controls {
+            margin: 10px 0;
+        }
+        .controls button {
+            margin-right: 10px;
+        }
+        </style>
+</head>
+<body>
+    <div class="controls">
+        <button id="clear"> clear Canvas</button>
+        color: <input type="color" id="color" value="#000000">
+        size: <input type="range" id="size" min="1" max="100" value="10">
+    </div>
+    <canvas id="canvas" width="500" height="400"></canvas>
+<script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const clearButton = document.getElementById("clear");
+    const colorInput = document.getElementById("color");
+    const sizeInput = document.getElementById("size");
+
+    let drawing = false;
+
+canvas.addEventListener("mousedown",startrawing);
+canvas.addEventListener("mousemove",draw);
+canvas.addEventListener("mouseup",stopDrawing);
+// canvas.addEventListener("mouseout", stopDrawing);
+  
+  function startrawing(event) {
+    console.log("start drawing",event);
+    drawing = true;
+    ctx.beginPath();
+    ctx.moveTo(event.offsetX, event.offsetY);
+  }
+function draw(event) {
+    if (!drawing) return;
+    ctx.lineWidth = sizeInput.value;
+    ctx.strokeStyle = colorInput.value;
+    ctx.lineTo(event.offsetX, event.offsetY);
+    ctx.stroke();
+  }
+function stopDrawing() {
+    drawing = false;
+  }
+  clearButton.addEventListener("click", function() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  });
+</script>
+
+</body>
+</html>

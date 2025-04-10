@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            background: rgb(255, 255, 255);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .score-board {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .choices {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .choice {
+
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .choice:hover {
+            background-color: #e0e0e0;
+        }
+
+        </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rock Paper Scissors</h1>
+        <div class="score-board">
+            <div id="user-score">User: 0</div>
+            <div id="computer-score">Computer: 0</div>
+        </div>
+        <div class="choices">
+            <button class="choice" data-test="rock">Rock</button>
+            <button class="choice" data-test="paper">Paper</button>
+
+            <button class="choice" data-test="scissors">Scissors</button>
+
+        </div>
+        <div id="result-message"></div>
+    </div>
+
+    <script>
+        const choices = document.querySelectorAll('.choice');
+        const userScoreDisplay = document.getElementById('user-score');
+        const computerScoreDisplay = document.getElementById('computer-score');
+        const resultMessage = document.getElementById('result-message');
+        let userScore = 0;
+        let computerScore = 0;
+
+        choices.forEach(choice=>{
+            choice.addEventListener("click", playGame)
+        })
+        function playGame(event) {
+            // console.log(event)
+            const userChoice = event.target.dataset.test;
+
+            const computerChoice = getComputerChoice();
+            const resultat = determineWinner(userChoice, computerChoice);
+
+     
+            AfficheMessage(resultat, userChoice, computerChoice);
+            
+        }
+        function getComputerChoice() {
+            const choices = ['rock', 'paper', 'scissors'];
+            const randomIndex = Math.floor(Math.random()* choices.length);
+            console.log(randomIndex)
+            return choices[randomIndex];
+        }
+        function determineWinner(userChoice, computerChoice) {
+           if(userChoice === computerChoice){
+            return "draw";
+           }
+           const winningCombo ={
+            rock:"scissors",
+            paper:"rock",
+            scissors:"paper"
+           }
+// user = rock computer = scissors
+           if(winningCombo[userChoice]===computerChoice){
+            return "user";
+           }else{
+            return "computer";
+           }
+
+        }
+        function AfficheMessage(resultat, userChoice, computerChoice) {
+            let message = "";
+            switch(resultat) {
+                case "user":
+                    userScore++;
+                    message = `You win! ${userChoice} beats ${computerChoice}`;
+                    break;
+                case "computer":
+                    computerScore++;
+                    message = `You lose! ${computerChoice} beats ${userChoice}`;
+                    break;
+                case "draw":
+                    message = `It's a draw! You both chose ${userChoice}`;
+                    break;
+            }
+            userScoreDisplay.textContent = `User: ${userScore}`;
+            computerScoreDisplay.textContent = `Computer: ${computerScore}`;
+            resultMessage.textContent = message;
+        }
+    </script>
+</body>
+</html>
+
+
